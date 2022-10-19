@@ -13,7 +13,7 @@ class Login extends UseCase<User, UserParams> {
 
   @override
   Future<Either<Failure, User>> call(params) async {
-    return await repository.login(
-        email: params.email, password: params.password);
+    return await repository
+        .login(User(email: params.email, password: params.password));
   }
 }

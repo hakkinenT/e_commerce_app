@@ -58,29 +58,18 @@ class MockUserRepository extends _i1.Mock implements _i3.UserRepository {
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, _i6.User>> login({
-    required String? email,
-    required String? password,
-  }) =>
+  _i4.Future<_i2.Either<_i5.Failure, _i6.User>> login(_i6.User? user) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
-          [],
-          {
-            #email: email,
-            #password: password,
-          },
+          [user],
         ),
         returnValue: _i4.Future<_i2.Either<_i5.Failure, _i6.User>>.value(
             _FakeEither_0<_i5.Failure, _i6.User>(
           this,
           Invocation.method(
             #login,
-            [],
-            {
-              #email: email,
-              #password: password,
-            },
+            [user],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, _i6.User>>);

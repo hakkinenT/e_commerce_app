@@ -1,5 +1,6 @@
 {
-    "name": "João",
+    "id": 1,
+    "username": "João",
     "email": "joaoemail@email.com",
     "password": "joao"
 }

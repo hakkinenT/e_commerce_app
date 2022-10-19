@@ -20,11 +20,13 @@ void main() {
   });
 
   group('login', () {
-    const user =
-        User(name: "João", email: "joaoemail@email.com", password: "12345678");
+    const user = User(
+        id: 1,
+        username: "João",
+        email: "joaoemail@email.com",
+        password: "12345678");
     test('should return user data after login in the app', () async {
-      when(mockUserRepository.login(
-              email: anyNamed('email'), password: anyNamed('password')))
+      when(mockUserRepository.login(any))
           .thenAnswer((_) async => const Right(user));
 
       final result = await usecase(
@@ -33,7 +35,7 @@ void main() {
       expect(result, const Right(user));
 
       verify(mockUserRepository.login(
-          email: "joaoemail@email.com", password: "12345678"));
+          const User(email: "joaoemail@email.com", password: "12345678")));
 
       verifyNoMoreInteractions(mockUserRepository);
     });

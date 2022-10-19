@@ -17,8 +17,8 @@ void main() {
   });
 
   group('registerUser', () {
-    const user =
-        User(name: "João", email: "joaoemail@email.com", password: "12345678");
+    const user = User(
+        username: "João", email: "joaoemail@email.com", password: "12345678");
     test('should return a user data if the register is successfully', () async {
       when(mockUserRepository.registerUser(any))
           .thenAnswer((_) async => const Right(user));
@@ -29,7 +29,9 @@ void main() {
       expect(result, const Right(user));
 
       verify(mockUserRepository.registerUser(const User(
-          name: "João", email: "joaoemail@email.com", password: "12345678")));
+          username: "João",
+          email: "joaoemail@email.com",
+          password: "12345678")));
 
       verifyNoMoreInteractions(mockUserRepository);
     });
