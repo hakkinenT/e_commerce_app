@@ -24,7 +24,9 @@ void main() {
           .thenAnswer((_) async => const Right(user));
 
       final result = await usecase(const UserParams(
-          name: "João", email: "joaoemail@email.com", password: "12345678"));
+          username: "João",
+          email: "joaoemail@email.com",
+          password: "12345678"));
 
       expect(result, const Right(user));
 

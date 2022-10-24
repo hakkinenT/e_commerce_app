@@ -19,18 +19,27 @@ class UserRemoteDataSourceImpl implements UserRemoteDataSource {
       {required this.tokenController, required this.client});
 
   @override
-  Future<UserModel> login(UserModel userModel) =>
-      _authenticate('$baseUrl/login', userModel);
+  Future<UserModel> login(UserModel userModel) async {
+    final response = await client.post(Uri.parse('$baseUrl/login'),
+        body: json
+            .encode({"email": userModel.email, "password": userModel.password}),
+        headers: {'Content-Type': 'application/json'});
+    return await _authenticateResult(response);
+  }
 
   @override
-  Future<UserModel> registerUser(UserModel userModel) =>
-      _authenticate('$baseUrl/register', userModel);
-
-  Future<UserModel> _authenticate(String url, UserModel userModel) async {
-    final response = await client.post(Uri.parse(url),
-        body: userModel.toJson(),
+  Future<UserModel> registerUser(UserModel userModel) async {
+    final response = await client.post(Uri.parse('$baseUrl/register'),
+        body: json.encode({
+          "username": userModel.username,
+          "email": userModel.email,
+          "password": userModel.password
+        }),
         headers: {'Content-Type': 'application/json'});
+    return await _authenticateResult(response);
+  }
 
+  Future<UserModel> _authenticateResult(http.Response response) async {
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
 
