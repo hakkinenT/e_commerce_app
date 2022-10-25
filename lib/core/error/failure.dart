@@ -7,6 +7,10 @@ abstract class Failure extends Equatable {
   List<Object?> get props => [];
 }
 
+// SharedPreferences Failure
+class CachedFailure extends Failure {}
+
+// Http State Code Error Failure
 class ServerFailure extends Failure {}
 
 class BadRequestFailure extends Failure {}
