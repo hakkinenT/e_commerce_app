@@ -42,7 +42,8 @@ void main() {
       userRemoteDataSourceImpl.login(userModel);
 
       verify(mockClient.post(Uri.parse('$baseUrl/login'),
-          body: userModel.toJson(),
+          body: json.encode(
+              {"email": userModel.email, "password": userModel.password}),
           headers: {'Content-Type': "application/json"}));
     });
 
@@ -99,7 +100,11 @@ void main() {
       userRemoteDataSourceImpl.registerUser(userModel);
 
       verify(mockClient.post(Uri.parse('$baseUrl/register'),
-          body: userModel.toJson(),
+          body: json.encode({
+            "username": userModel.username,
+            "email": userModel.email,
+            "password": userModel.password
+          }),
           headers: {'Content-Type': "application/json"}));
     });
 
