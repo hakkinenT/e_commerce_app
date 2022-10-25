@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:e_commerce_app/core/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/error/exception.dart';
 import 'package:e_commerce_app/core/token/token_controller.dart';
 import 'package:e_commerce_app/features/user/data/datasources/user_remote_data_source.dart';

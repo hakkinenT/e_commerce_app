@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/core/constants/constants.dart';
-import 'package:e_commerce_app/core/validator/form_validator.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/validator/form_validator.dart';
 import 'package:e_commerce_app/features/user/presentation/forminputs/email_input.dart';
 import 'package:e_commerce_app/features/user/presentation/forminputs/username_input.dart';
 import 'package:flutter_test/flutter_test.dart';

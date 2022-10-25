@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/validator/input_validator.dart';
+import 'package:e_commerce_app/core/utils/validator/input_validator.dart';
 
 /// The states of the FormStatus
 enum FormStatus { initial, valid, invalid }

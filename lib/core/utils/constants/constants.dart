@@ -1,4 +1,5 @@
 const baseUrl = 'http://192.168.1.3:3000';
+const productCatalogUrl = '$baseUrl/444/products';
 
 // input validators messages
 

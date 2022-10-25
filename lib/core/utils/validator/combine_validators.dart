@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/validator/input_validator.dart';
+import 'package:e_commerce_app/core/utils/validator/input_validator.dart';
 
 /// A combine validators to classes of type [InputValidator].
 mixin CombineValidators<T> on InputValidator {

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/constants/constants.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/features/user/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
