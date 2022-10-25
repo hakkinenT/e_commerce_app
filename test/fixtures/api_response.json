@@ -1,0 +1,8 @@
+{
+    "accessToken": "xxxx.xxxxx.xxxx",
+    "user": {
+        "username": "João",
+        "email": "joaoemail@email.com",
+        "id": 1
+    }
+}
