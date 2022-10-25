@@ -94,6 +94,7 @@ class _EmailInput extends StatelessWidget {
     return BlocBuilder<LoginFormValidationCubit, LoginFormValidationState>(
       builder: (context, state) {
         return CustomTextFormField(
+          key: const ValueKey("emailInput_loginPage"),
           autovalidateMode: AutovalidateMode.onUserInteraction,
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
@@ -123,6 +124,7 @@ class _PasswordInput extends StatelessWidget {
     return BlocBuilder<LoginFormValidationCubit, LoginFormValidationState>(
       builder: (context, state) {
         return CustomTextFormField(
+          key: const ValueKey("passwordInput_loginPage"),
           autovalidateMode: AutovalidateMode.onUserInteraction,
           labelText: "Senha",
           hintText: "Senha",
@@ -150,6 +152,7 @@ class _LoginButton extends StatelessWidget {
     return BlocBuilder<LoginFormValidationCubit, LoginFormValidationState>(
       builder: (context, state) {
         return CustomButton(
+            key: const ValueKey("loginButton_loginPage"),
             onPressed: state.status.isValidated
                 ? () {
                     final user = User(
