@@ -1,4 +1,5 @@
 const baseUrl = 'http://192.168.1.3:3000';
+const productCatalogUrl = '$baseUrl/444/products';
 
 // input validators messages
 
@@ -10,3 +11,8 @@ const invalidEmailFailureMessage = "E-mail inválido";
 const passwordLengthFailureMessage = "A senha deve ter no mínimo 8 caracteres";
 const passwordHasNotLetterFailureMessage = "A senha deve conter letras";
 const passwordHasNotNumberFailureMessage = "A senha deve conter números";
+
+// Cache failure error message
+const serverFailureMessage = "Houve um erro ao tentar acessar o servidor";
+const cacheFailureMessage =
+    "Houve um erro ao tentar guardar a informação no cache";

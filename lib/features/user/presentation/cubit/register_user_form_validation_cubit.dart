@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../../core/validator/form_validator.dart';
+import '../../../../core/utils/validator/form_validator.dart';
 import '../forminputs/email_input.dart';
 import '../forminputs/password_input.dart';
 import '../forminputs/username_input.dart';

@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/core/validator/combine_validators.dart';
-import 'package:e_commerce_app/core/validator/input_validator.dart';
-import 'package:e_commerce_app/core/validator/input_validator_rules.dart';
+import 'package:e_commerce_app/core/utils/validator/combine_validators.dart';
+import 'package:e_commerce_app/core/utils/validator/input_validator.dart';
+import 'package:e_commerce_app/core/utils/validator/input_validator_rules.dart';
 
 class UsernameInput extends InputValidator with CombineValidators<String?> {
   const UsernameInput({required super.value});

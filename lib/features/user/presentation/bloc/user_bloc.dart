@@ -1,18 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/params/user_params.dart';
-import 'package:e_commerce_app/core/validator/input_validator.dart';
 import 'package:e_commerce_app/features/user/domain/entities/user.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failure.dart';
+import '../../../../core/utils/constants/constants.dart';
 import '../../domain/usecases/login.dart';
 import '../../domain/usecases/register_user.dart';
 
 part 'user_event.dart';
 part 'user_state.dart';
-
-const String serverFailureMessage = 'Server Failure';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final Login userLogin;

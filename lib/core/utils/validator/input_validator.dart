@@ -1,4 +1,4 @@
-import '../error/failure.dart';
+import '../../error/failure.dart';
 
 abstract class InputValidator {
   final String value;

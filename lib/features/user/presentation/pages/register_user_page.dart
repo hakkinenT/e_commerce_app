@@ -1,9 +1,9 @@
-import 'package:e_commerce_app/features/user/presentation/pages/page_test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/validator/form_validator.dart';
+import '../../../../core/utils/validator/form_validator.dart';
 import '../../../../injection_container.dart';
+import '../../../productCatalog/presentation/pages/product_catalog_page.dart';
 import '../../domain/entities/user.dart';
 import '../bloc/user_bloc.dart';
 import '../cubit/register_user_form_validation_cubit.dart';
@@ -52,8 +52,8 @@ class _RegisterUserViewState extends State<RegisterUserView> {
     return BlocListener(
       listener: (context, state) {
         if (state is UserSuccess) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => const PageTest()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (_) => const ProductCatalogPage()));
         }
       },
       child: Scaffold(

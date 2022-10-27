@@ -1,0 +1,10 @@
+{
+    "code": "101",
+    "brand": "Nescafé",
+    "price": 2.5,
+    "image-url": "http://",
+    "expiration-date": "2023-05-02T00:00:00.000",
+    "product": {
+        "name": "Café"
+    }
+}
