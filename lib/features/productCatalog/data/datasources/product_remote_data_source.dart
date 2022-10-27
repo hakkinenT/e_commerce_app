@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:e_commerce_app/core/error/exception.dart';
-import 'package:e_commerce_app/core/utils/constants/constants.dart';
-import 'package:e_commerce_app/core/utils/status_code_map/status_code_map.dart';
-import 'package:e_commerce_app/features/productCatalog/data/models/product_item_model.dart';
 import 'package:http/http.dart' as http;
+
+import '../../../../core/error/exception.dart';
+import '../../../../core/utils/constants/constants.dart';
+import '../models/product_item_model.dart';
 
 abstract class ProductRemoteDataSource {
   Future<List<ProductItemModel>> getProducts();

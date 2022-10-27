@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
-import '../../../../core/utils/constants/status_code_error_messages.dart';
+import '../../../../core/utils/constants/constants.dart';
 import '../../domain/entities/product_item.dart';
 import '../../domain/usecases/get_products.dart';
 
@@ -34,21 +34,9 @@ class ProductcatalogBloc
   String _mapFailureToMessage(Failure failure) {
     switch (failure.runtimeType) {
       case ServerFailure:
-        return internalServerErrorMessage;
-      case BadRequestFailure:
-        return badRequestErrorMessage;
-      case UnauthorizedFailure:
-        return unauthorizedErrorMessage;
-      case ForbiddenFailure:
-        return forbiddenErrorMessage;
-      case NotFoundFailure:
-        return notFoundErrorMessage;
-      case RequestTimeoutFailure:
-        return requestTimeoutErrorMessage;
-      case TooManyRequestsFailure:
-        return tooManyRequestsErrorMessage;
-      case ClientClosedFailure:
-        return clientClosedRequestErrorMessage;
+        return serverFailureMessage;
+      case CachedFailure:
+        return cacheFailureMessage;
       default:
         return 'UnexpectedError';
     }

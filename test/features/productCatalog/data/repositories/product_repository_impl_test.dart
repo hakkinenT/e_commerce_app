@@ -122,21 +122,6 @@ void main() {
         verifyZeroInteractions(mockLocalDataSource);
         expect(result, equals(Left(ServerFailure())));
       });
-
-      test(
-          'should return a too many requests failure when the user do many requisitions.',
-          () async {
-        when(mockNetworkInfo.isConnected).thenAnswer((_) async => true);
-
-        when(mockRemoteDataSource.getProducts())
-            .thenThrow(TooManyRequestsException());
-
-        final result = await repositoryImpl.getProducts();
-
-        verify(mockRemoteDataSource.getProducts());
-        verifyZeroInteractions(mockLocalDataSource);
-        expect(result, equals(Left(TooManyRequestsFailure())));
-      });
     });
 
     group('device is offline', () {

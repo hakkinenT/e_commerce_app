@@ -13,4 +13,6 @@ const passwordHasNotLetterFailureMessage = "A senha deve conter letras";
 const passwordHasNotNumberFailureMessage = "A senha deve conter números";
 
 // Cache failure error message
-const String cacheFailureErrorMessage = 'Cache Failure';
+const serverFailureMessage = "Houve um erro ao tentar acessar o servidor";
+const cacheFailureMessage =
+    "Houve um erro ao tentar guardar a informação no cache";

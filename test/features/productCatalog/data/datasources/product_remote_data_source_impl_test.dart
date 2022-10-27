@@ -75,16 +75,5 @@ void main() {
 
       expect(() => call(), throwsA(const TypeMatcher<ServerException>()));
     });
-
-    test('should throw a too many requests exception when the code is 429',
-        () async {
-      when(mockClient.get(any, headers: anyNamed('headers')))
-          .thenAnswer((_) async => http.Response("Too many requests", 429));
-
-      final call = remoteDataSourceImpl.getProducts;
-
-      expect(
-          () => call(), throwsA(const TypeMatcher<TooManyRequestsException>()));
-    });
   });
 }

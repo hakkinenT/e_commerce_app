@@ -2,12 +2,11 @@ import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/error/failure.dart';
 import 'package:e_commerce_app/core/usecase/usecase.dart';
-import 'package:e_commerce_app/core/utils/constants/status_code_error_messages.dart';
+import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/features/productCatalog/domain/entities/product.dart';
 import 'package:e_commerce_app/features/productCatalog/domain/entities/product_item.dart';
 import 'package:e_commerce_app/features/productCatalog/domain/usecases/get_products.dart';
 import 'package:e_commerce_app/features/productCatalog/presentation/bloc/productcatalog_bloc.dart';
-import 'package:e_commerce_app/features/user/presentation/bloc/user_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -85,23 +84,7 @@ void main() {
       act: (bloc) => bloc.add(ProductcatalogFetched()),
       expect: () => <ProductcatalogState>[
         ProductcatalogLoading(),
-        const ProductcatalogError(message: internalServerErrorMessage)
-      ],
-    );
-
-    blocTest<ProductcatalogBloc, ProductcatalogState>(
-      '''emits [ProductcatalogLoading, ProductcatalogError] with appropriate
-      error message when ProductcatalogFetched is added 
-      and too many requests is made.''',
-      setUp: () {
-        when(mockGetProducts(any))
-            .thenAnswer((_) async => Left(TooManyRequestsFailure()));
-      },
-      build: () => bloc,
-      act: (bloc) => bloc.add(ProductcatalogFetched()),
-      expect: () => <ProductcatalogState>[
-        ProductcatalogLoading(),
-        const ProductcatalogError(message: tooManyRequestsErrorMessage)
+        const ProductcatalogError(message: serverFailureMessage)
       ],
     );
   });
