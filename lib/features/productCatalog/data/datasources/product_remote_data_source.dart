@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:e_commerce_app/core/error/exception.dart';
 import 'package:e_commerce_app/core/utils/constants/constants.dart';
 import 'package:e_commerce_app/core/utils/status_code_map/status_code_map.dart';
 import 'package:e_commerce_app/features/productCatalog/data/models/product_item_model.dart';
@@ -19,18 +20,15 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     final response = await client.get(Uri.parse(productCatalogUrl),
         headers: {"Content-type": "application/json"});
 
-    final List<ProductItemModel> successResponse = StatusCodeMap.mapStatusCode(
-        successFunction: () => _convertJsonToList(response.body),
-        code: response.statusCode);
-
-    return successResponse;
-  }
-
-  List<ProductItemModel> _convertJsonToList(String jsonBody) {
-    final productList = (json.decode(jsonBody) as List<dynamic>)
-        .map((item) => ProductItemModel.fromJson(item))
-        .toList();
-
-    return productList;
+    if (response.statusCode == 200) {
+      List<ProductItemModel> products = [];
+      List responseJson = json.decode(response.body);
+      responseJson
+          .map((e) => products.add(ProductItemModel.fromJson(e)))
+          .toList();
+      return products;
+    } else {
+      throw ServerException();
+    }
   }
 }

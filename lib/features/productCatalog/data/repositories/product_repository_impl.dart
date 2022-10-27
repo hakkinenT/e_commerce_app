@@ -20,42 +20,21 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<Either<Failure, List<ProductItem>>> getProducts() async {
     if (await networkInfo.isConnected) {
-      return _getRemoteProducts();
+      try {
+        final products = await remoteDataSource.getProducts();
+
+        await localDataSource.cacheProducts(products);
+        return Right(products);
+      } on ServerException {
+        return Left(ServerFailure());
+      }
     } else {
-      return _getLocallyProducts();
-    }
-  }
-
-  Future<Either<Failure, List<ProductItem>>> _getRemoteProducts() async {
-    try {
-      final products = await remoteDataSource.getProducts();
-      await localDataSource.cacheProducts(products);
-      return Right(products);
-    } on ServerException {
-      return Left(ServerFailure());
-    } on BadRequestException {
-      return Left(BadRequestFailure());
-    } on UnauthorizedException {
-      return Left(UnauthorizedFailure());
-    } on ForbiddenException {
-      return Left(ForbiddenFailure());
-    } on NotFoundException {
-      return Left(NotFoundFailure());
-    } on RequestTimeoutException {
-      return Left(RequestTimeoutFailure());
-    } on TooManyRequestsException {
-      return Left(TooManyRequestsFailure());
-    } on ClientClosedException {
-      return Left(ClientClosedFailure());
-    }
-  }
-
-  Future<Either<Failure, List<ProductItem>>> _getLocallyProducts() async {
-    try {
-      final productsCached = await localDataSource.getLastProducts();
-      return Right(productsCached);
-    } on CachedException {
-      return Left(CachedFailure());
+      try {
+        final productsCached = await localDataSource.getLastProducts();
+        return Right(productsCached);
+      } on CachedException {
+        return Left(CachedFailure());
+      }
     }
   }
 }

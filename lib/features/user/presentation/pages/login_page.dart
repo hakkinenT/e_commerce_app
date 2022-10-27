@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/productCatalog/presentation/pages/product_catalog_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +10,7 @@ import '../cubit/login_form_validation_cubit.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_form_field.dart';
 import '../widgets/submitting_form_status.dart';
-import 'page_test.dart';
+
 import 'register_user_page.dart';
 
 class LoginPage extends StatelessWidget {
@@ -43,8 +44,8 @@ class _LoginViewState extends State<LoginView> {
     return BlocListener<UserBloc, UserState>(
       listener: (context, state) {
         if (state is UserSuccess) {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (_) => const PageTest()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (_) => const ProductCatalogPage()));
         }
       },
       child: Scaffold(

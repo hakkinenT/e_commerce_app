@@ -1,6 +1,4 @@
-import 'package:e_commerce_app/features/productCatalog/data/models/product_model.dart';
-
-import '../../domain/entities/product.dart';
+import 'product_model.dart';
 import '../../domain/entities/product_item.dart';
 
 class ProductItemModel extends ProductItem {
